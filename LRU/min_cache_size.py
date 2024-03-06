@@ -18,11 +18,26 @@ def get_min_size(requests, k):
 
 	return final[k-1]
 
+def get_min_size2(requests, k):
+	if k == 0:
+		return 0
+
+	distinct_request = set()
+	min_sizes = []
+
+	for req in requests:
+		distinct_request.add(req)
+		if len(distinct_request) >= k:
+			min_sizes.append(len(distinct_request))
+			break
+
+	return min_sizes[-1] if min_sizes else -1
+
 def main():
 	req = ['item1', 'item2', 'item3', 'item1', 'item2']
 	k = 1
 
-	print(get_min_size(req, k))
+	print(get_min_size2(req, k))
 
 if __name__ == "__main__":
 	main()
